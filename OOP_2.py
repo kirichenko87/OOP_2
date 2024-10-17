@@ -7,9 +7,11 @@ class Potion:
         
         self.make_potion(potion, lst_potion, lvl_hard, efect)    
 
+
         
     def set_status(self, new_status: bool):
         self.__status = new_status
+        
         
     def add_component(self, new_component: str):
         if  new_component in self.__lst_potion:
@@ -17,11 +19,13 @@ class Potion:
         else:
             self.__lst_potion.append(new_component)
         
+        
     def remove_component(self, component: str):
         if not component in self.__lst_potion:
             return(f"Вы ошиблись с компонентом {component} его нет в списке")
         else:
             self.__lst_potion.remove(component)
+    
     
     def set_lvl_hard(self,new_lvl: int):
         if not isinstance(new_lvl, int):
@@ -31,6 +35,7 @@ class Potion:
             return f"Вы выбрали не допустимый уровень сложности зелья"
         
         self.__lvl_hard = new_lvl
+        
         
     def __cast_potion(self, potion, lst_potion, lvl_hard, efect):
         self.__potion = potion
@@ -42,9 +47,11 @@ class Potion:
     def make_potion(self, potion, lst_potion, lvl_hard, efect): # решил попробовать спрятать метод
         self.__cast_potion(potion, lst_potion, lvl_hard, efect)
     
+    
     def get_lst_potion(self):
         lst = ", ".join(self.__lst_potion)
         return lst
+    
     
     def __str__(self):
         return f"Наше чудо зедья называется {self.__potion}, уровень сложности приготовления {self.__lvl_hard}, ингридиенты {self.__lst_potion}, имеет эфект {self.__efect}"
@@ -60,5 +67,6 @@ class Program:
         poison.set_lvl_hard(6)
         print(poison.get_lst_potion())
         print(poison)
+
 
 Program.main()
